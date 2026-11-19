@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新納和奏のポートフォリオ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kurenaido&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<!--
+  ===== 自分で直すときのメモ =====
+  ・文章を変える: 下の <body> の中の文章をそのまま書き換える（作品ごとに「ここから作品」のコメントがあります）
+  ・作品を足す: 「ここから作品」から「ここまで作品」までを丸ごとコピーして、好きな位置に貼る（番号 01, 02… は手で直す。水彩の色は自動で変わります。リンクは <a class="go"> の href に入れる）
+  ・色を変える: すぐ下の <style> の先頭にある --indigo, --moss, --rose, --ochre
+  ・フォントを変える: 同じく先頭の --font-body（本文）、--font-hand（見出し）、--font-accent（名前と番号とメモ）
+  ・GitHubのリンクや名前: 一番下の「れんらく」「footer」を書き換える
+-->
+<style>
+/* 配色: 生成りの紙に墨のインク。藍・苔・桃・黄土は水彩のにじみにだけ使う。
+   レイアウト: ノートを1ページずつめくる感じ。作品ごとに左右へ少しずらし、飾りは手書きの注釈と線だけにする */
+:root{
+  --paper:#f3f1e8;
+  --ink:#2a3433;
+  --ink-soft:#63706d;
+  --indigo:#6b8aa6;
+  --moss:#9bb08a;
+  --rose:#d9a094;
+  --ochre:#dcbb78;
+  --red:#b9503f;
+  --font-accent:"Zen Kurenaido","Klee One",sans-serif; /* 名前・番号・赤いメモだけに使う手書き */
+  --font-hand:"Klee One","Zen Maru Gothic",sans-serif; /* 見出しや補足。読みやすい手書き風 */
+  --font-body:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif; /* 本文 */
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.95;
+  background-color:var(--paper);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .32  0 0 0 0 .25  0 0 0 .09 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--ink)}
+a:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.page{max-width:780px;margin:0 auto;padding:0 22px}
+.hand{font-family:var(--font-hand)}
+
+/* ---- 表紙 ---- */
+.cover{position:relative;padding:64px 0 40px}
+.cover .smudge{position:absolute;right:-30px;top:10px;width:380px;height:300px;pointer-events:none;
+  background:
+    radial-gradient(ellipse 45% 40% at 62% 38%,rgba(107,138,166,.42),transparent 70%),
+    radial-gradient(ellipse 38% 34% at 40% 62%,rgba(217,160,148,.40),transparent 70%),
+    radial-gradient(ellipse 30% 28% at 78% 72%,rgba(155,176,138,.45),transparent 70%);
+  filter:blur(6px);transform:rotate(-8deg)}
+.cover .sprout{position:absolute;right:62px;top:40px;width:150px;transform:rotate(4deg)}
+.cover-text{position:relative;max-width:520px}
+.cover .tiny{font-family:var(--font-hand);font-size:15px;color:var(--ink-soft);margin:0 0 4px;letter-spacing:.1em}
+h1{font-family:var(--font-accent);font-weight:400;font-size:clamp(44px,9vw,72px);line-height:1.25;margin:0 0 18px;letter-spacing:.08em}
+.cover .catch{font-size:18px;margin:0 0 6px}
+.cover .who{font-size:14.5px;color:var(--ink-soft);margin:0}
+
+.index{margin:34px 0 0;padding:0;list-style:none;font-family:var(--font-hand);font-size:16px;display:flex;flex-wrap:wrap;gap:2px 26px}
+.index a{text-decoration:none;color:var(--ink-soft)}
+.index a:hover{color:var(--ink);text-decoration:underline wavy var(--rose) 1.5px;text-underline-offset:5px}
+
+/* 手描き風の区切り線 */
+.rule{display:block;width:100%;height:14px;margin:0}
+.rule path{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;vector-effect:non-scaling-stroke;opacity:.55}
+
+/* ---- 見出し ---- */
+h2{font-family:var(--font-hand);font-weight:400;font-size:26px;letter-spacing:.14em;margin:0 0 22px;display:inline-block;position:relative;padding:0 4px}
+h2::after{content:"";position:absolute;left:-2px;right:-6px;bottom:-1px;height:9px;background:var(--ochre);opacity:.55;z-index:-1;transform:rotate(-.8deg);border-radius:4px 10px 6px 12px}
+section{padding:52px 0 8px}
+p{margin:0 0 14px}
+
+/* ---- 自己紹介 ---- */
+.about p{max-width:31em}
+
+/* ---- 作品（横スライド） ---- */
+.works-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:6px}
+.works-head h2{margin-bottom:12px}
+.arrows{display:flex;gap:10px;margin-bottom:14px}
+.arrows button{font-family:var(--font-hand);font-size:20px;line-height:1;width:42px;height:36px;border:1.6px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;
+  border-radius:20px 8px 22px 10px/10px 22px 8px 20px}
+.arrows button:hover{background:var(--ochre)}
+.arrows button:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 22px 26px;margin:0 -22px;scrollbar-width:thin;scrollbar-color:rgba(42,52,51,.35) transparent;-webkit-overflow-scrolling:touch}
+.track:focus-visible{outline:3px solid var(--ochre);outline-offset:-3px}
+.card{position:relative;flex:0 0 272px;scroll-snap-align:start;display:flex;flex-direction:column;padding:20px 20px 18px;border:1.6px solid rgba(42,52,51,.75);background:rgba(255,255,255,.28)}
+.card:nth-child(5n+1){border-radius:24px 8px 28px 10px/10px 26px 12px 28px;transform:rotate(-.6deg);background-image:radial-gradient(ellipse 80% 60% at 20% 0%,rgba(107,138,166,.28),transparent 70%)}
+.card:nth-child(5n+2){border-radius:10px 28px 8px 24px/28px 10px 26px 12px;transform:rotate(.5deg);background-image:radial-gradient(ellipse 80% 60% at 80% 0%,rgba(155,176,138,.34),transparent 70%)}
+.card:nth-child(5n+3){border-radius:26px 10px 10px 28px/12px 28px 24px 8px;transform:rotate(-.4deg);background-image:radial-gradient(ellipse 80% 60% at 20% 0%,rgba(217,160,148,.32),transparent 70%)}
+.card:nth-child(5n+4){border-radius:8px 24px 28px 12px/26px 8px 12px 28px;transform:rotate(.6deg);background-image:radial-gradient(ellipse 80% 60% at 80% 0%,rgba(220,187,120,.38),transparent 70%)}
+.card:nth-child(5n){border-radius:28px 12px 24px 8px/8px 28px 10px 26px;transform:rotate(-.5deg);background-image:radial-gradient(ellipse 80% 60% at 20% 0%,rgba(107,138,166,.22),transparent 70%)}
+.card .top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.no{font-family:var(--font-accent);font-size:34px;line-height:1;opacity:.85;margin:0}
+.sketch{width:52px;height:52px;flex:none;transform:rotate(5deg)}
+.card h3{font-family:var(--font-hand);font-weight:600;font-size:18.5px;line-height:1.5;margin:0 0 2px;letter-spacing:.03em}
+.cap{font-family:var(--font-hand);font-size:13px;color:var(--ink-soft);margin:0 0 10px;line-height:1.7}
+.card p.body{font-size:14.5px;line-height:1.85;margin:0 0 12px}
+.stack{font-family:var(--font-hand);font-size:13px;color:var(--ink-soft);margin:auto 0 0;line-height:1.7}
+.go{display:inline-block;align-self:flex-start;margin-top:14px;font-family:var(--font-hand);font-size:14.5px;color:var(--ink);text-decoration:underline wavy var(--indigo) 1.4px;text-underline-offset:5px}
+.go:hover{background:rgba(220,187,120,.45)}
+.soon{margin-top:14px;font-family:var(--font-hand);font-size:13px;color:var(--ink-soft)}
+
+/* ---- できること ---- */
+.can{max-width:34em;margin:0;padding:0;list-style:none}
+.can li{padding:8px 0 10px;border-bottom:1.4px dashed rgba(42,52,51,.28)}
+.can li:last-child{border-bottom:0}
+.can b{font-family:var(--font-hand);font-weight:400;font-size:17px;letter-spacing:.08em;margin-right:12px;box-shadow:inset 0 -.55em 0 rgba(155,176,138,.5)}
+
+/* ---- いま考えていること ---- */
+.now p{max-width:31em}
+.now blockquote{margin:22px 0 18px 4px;padding:2px 0 2px 20px;border-left:3px solid var(--rose);font-family:var(--font-hand);font-size:19px;line-height:1.9;max-width:26em}
+
+/* ---- 連絡先 ---- */
+.contact a{font-family:var(--font-hand);font-size:18px;letter-spacing:.06em;text-decoration:underline wavy var(--indigo) 1.5px;text-underline-offset:6px}
+footer{padding:46px 0 64px;font-family:var(--font-hand);font-size:13.5px;color:var(--ink-soft);letter-spacing:.08em}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .cover{padding:44px 0 28px}
+  .cover .smudge{width:260px;height:220px;right:-60px}
+  .cover .sprout{width:92px;right:14px;top:22px}
+  .card{flex-basis:78vw}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="cover">
+    <div class="smudge" aria-hidden="true"></div>
+    <svg class="sprout" viewBox="0 0 120 150" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M62 146 C 59 112, 66 78, 60 40"/>
+      <path d="M60 86 C 34 86, 14 66, 12 40 C 40 38, 58 58, 60 86 Z"/>
+      <path d="M61 58 C 84 56, 104 40, 108 14 C 82 12, 64 30, 61 58 Z"/>
+      <path d="M22 50 C 32 52, 44 60, 52 78" stroke-width="1.2"/>
+      <path d="M74 38 C 86 36, 96 30, 102 22" stroke-width="1.2"/>
+      <path d="M40 148 C 54 142, 72 143, 86 149"/>
+    </svg>
+    <div class="cover-text">
+      <p class="tiny">PORTFOLIO 2026</p>
+      <h1>新納 和奏</h1>
+      <p class="catch">データを使って、経営のことを考えています。</p>
+      <p class="who">武蔵野大学 データサイエンス学部 2年 ／ 石橋ゼミ ／ 佐賀県出身</p>
+      <ul class="index" aria-label="ページ内の目次">
+        <li><a href="#about">じこしょうかい</a></li>
+        <li><a href="#works">つくったもの</a></li>
+        <li><a href="#can">できること</a></li>
+        <li><a href="#now">いま考えていること</a></li>
+        <li><a href="#contact">れんらく</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <svg class="rule" viewBox="0 0 780 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 90 3, 160 12, 260 7 S 430 3, 520 8 S 700 11, 778 6"/></svg>
+
+  <main>
+    <!-- 自己紹介: 文章を書き換えてください -->
+    <section id="about" class="about">
+      <h2>じこしょうかい</h2>
+      <p>武蔵野大学でデータサイエンスを学んでいます。ゼミでは、データサイエンスを経営や意思決定にどう使うかを扱っています。</p>
+      <p>授業の課題で終わらせず、実際に動くアプリまで作るのが好きです。中小企業向けの経営指標診断ツールは一人で作り、Open DS AI Forum 2026で発表しました。</p>
+    </section>
+
+    <section id="works">
+      <div class="works-head">
+        <h2>つくったもの</h2>
+        <div class="arrows">
+          <button type="button" id="prev" aria-label="前の作品へ">←</button>
+          <button type="button" id="next" aria-label="次の作品へ">→</button>
+        </div>
+      </div>
+      <div class="track" id="track" tabindex="0" aria-label="作品の一覧（横にスクロールできます）">
+      <!-- ===== ここから作品1（この部分をコピーすると作品を増やせます） ===== -->
+      <article class="card">
+        <div class="top"><p class="no">01</p><svg class="sketch" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8 L 8 47 L 50 47"/><path d="M17 38 L 17 30 M27 38 L 27 20 M37 38 L 37 26 M46 38 L 46 14"/><path d="M14 25 C 22 18, 30 23, 47 8"/></svg></div>
+        <h3>中小企業向け 経営指標診断ツール</h3>
+        <p class="cap">石橋ゼミ ／ ひとりで制作</p>
+        <p class="body">財務データから経営指標を計算し、公的機関の統計と比べて、次に確かめる問いまで提案します。Open DS AI Forum 2026で発表しました。</p>
+        <p class="stack">Node.js ・ SQLite</p>
+        <a class="go" href="https://github.com/Wakana-0907/keiei-shihyo-app" target="_blank" rel="noopener">コードを見る →</a>
+      </article>
+      <!-- ===== ここまで作品 ===== -->
+      <!-- ===== ここから作品2（この部分をコピーすると作品を増やせます） ===== -->
+      <article class="card">
+        <div class="top"><p class="no">02</p><svg class="sketch" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 27 L 28 9 L 49 27"/><path d="M13 24 L 13 47 L 43 47 L 43 24"/><path d="M23 47 L 23 34 L 33 34 L 33 47"/></svg></div>
+        <h3>空き家活用プランナー</h3>
+        <p class="cap">VORN Challenge 2026 ／ 3人チーム</p>
+        <p class="body">やりたいことをAIエージェントに話すと、空き家探しから改修、収支、補助金まで提案する構想のアプリです。</p>
+        <p class="stack">LLMエージェント ・ API連携</p>
+        <!-- リンクを入れるときはここ: <a class="go" href="URL" target="_blank" rel="noopener">見てみる →</a> -->
+      </article>
+      <!-- ===== ここまで作品 ===== -->
+      <!-- ===== ここから作品3（この部分をコピーすると作品を増やせます） ===== -->
+      <article class="card">
+        <div class="top"><p class="no">03</p><svg class="sketch" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10 C 6 8, 18 8, 18 10 L 19 46 C 18 48, 7 48, 6 46 Z"/><path d="M22 10 C 22 8, 34 8, 34 10 L 34 46 C 34 48, 23 48, 22 46 Z"/><path d="M38 10 C 38 8, 50 8, 50 10 L 51 46 C 50 48, 39 48, 38 46 Z"/><path d="M9 17 L 15 17 M26 17 L 31 17 M42 17 L 47 17 M42 24 L 47 24" stroke-width="1.4"/></svg></div>
+        <h3>TeamBalancer</h3>
+        <p class="cap">ゼミ向けのタスク管理アプリ</p>
+        <p class="body">カンバンで進み具合を共有し、メンバーごとの作業量をグラフにして偏りを見せます。</p>
+        <p class="stack">HTML ・ CSS ・ JavaScript ・ Chart.js</p>
+        <!-- リンクを入れるときはここ: <a class="go" href="URL" target="_blank" rel="noopener">見てみる →</a> -->
+      </article>
+      <!-- ===== ここまで作品 ===== -->
+      <!-- ===== ここから作品4（この部分をコピーすると作品を増やせます） ===== -->
+      <article class="card">
+        <div class="top"><p class="no">04</p><svg class="sketch" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 14 L 8 22 L 14 29 L 19 26 L 19 47 L 37 47 L 37 26 L 42 29 L 48 22 L 38 14 C 35 19, 21 19, 18 14 Z"/><circle cx="47" cy="9" r="4"/></svg></div>
+        <h3>洗濯ものナビ</h3>
+        <p class="cap">洗濯物の乾きやすさを知らせるWebアプリ</p>
+        <p class="body">天気と衣類のデータから、乾くまでの時間の目安を出します。授業で学んだ機械学習の手法を試しました。</p>
+        <p class="stack">Python ・ scikit-learn ・ mlxtend</p>
+        <a class="go" href="https://github.com/Wakana-0907/laundry1.app" target="_blank" rel="noopener">コードを見る →</a>
+      </article>
+      <!-- ===== ここまで作品 ===== -->
+      <!-- ===== ここから作品5（この部分をコピーすると作品を増やせます） ===== -->
+      <article class="card">
+        <div class="top"><p class="no">05</p><svg class="sketch" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="#2a3433" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M28 51 C 18 38, 12 31, 12 22 A 16 16 0 0 1 44 22 C 44 31, 38 38, 28 51 Z"/><circle cx="28" cy="22" r="5.5"/></svg></div>
+        <h3>東京の観光スポット検索マップ</h3>
+        <p class="cap">時空間データベースの授業課題</p>
+        <p class="body">東京の観光スポットを地図の上で探せます。データはPostgreSQLに入れ、大学のサーバーに公開しました。</p>
+        <p class="stack">PHP ・ PostgreSQL ・ Leaflet.js</p>
+        <!-- リンクを入れるときはここ: <a class="go" href="URL" target="_blank" rel="noopener">見てみる →</a> -->
+      </article>
+      <!-- ===== ここまで作品 ===== -->
+      </div>
+    </section>
+
+    <svg class="rule" viewBox="0 0 780 14" preserveAspectRatio="none" aria-hidden="true" style="margin-top:20px"><path d="M2 8 C 90 4, 180 11, 280 7 S 480 4, 580 9 S 720 6, 778 7"/></svg>
+
+    <section id="can">
+      <h2>できること</h2>
+      <ul class="can">
+        <li><b>データ分析</b>Python（scikit-learn、mlxtend）で、回帰、クラスタリング、決定木、相関ルールを扱ってきました。</li>
+        <li><b>Webアプリ</b>Node.js、PHP、HTML / CSS / JavaScript で、画面からデータ処理まで一通り作れます。</li>
+        <li><b>データベース</b>PostgreSQL と SQLite で、アプリのデータを設計して保存しています。</li>
+        <li><b>見せ方</b>Chart.js や Leaflet.js で図と地図を作り、報告書（ReportLab）と発表資料にまとめます。</li>
+      </ul>
+    </section>
+
+    <section id="now" class="now">
+      <h2>いま考えていること</h2>
+      <p>経営分野で研究をしたいと考えています。ゼミで作った経営指標のアプリを土台に、先生に相談しながらテーマを練っています。</p>
+      <blockquote>診断の判定基準や比べる単位（業種の分け方、企業の規模）を変えると、結果はどれくらい変わるのか。</blockquote>
+      <p>まずはオープンデータで小さく試して、実社会のデータで確かめるところまで進めたいです。</p>
+    </section>
+
+    <!-- 連絡先: リンクやメールを足すときはここ -->
+    <section id="contact" class="contact">
+      <h2>れんらく</h2>
+      <p>作ったもののコードはGitHubに置いています。</p>
+      <p><a href="https://github.com/Wakana-0907" target="_blank" rel="noopener">github.com/Wakana-0907</a></p>
+    </section>
+  </main>
+
+  <footer>© 2026 Wakana Niino</footer>
+</div>
+<script>
+(function(){
+  var t=document.getElementById('track');
+  if(!t)return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(d){t.scrollBy({left:d*(t.querySelector('.card').offsetWidth+22),behavior:reduce?'auto':'smooth'});}
+  document.getElementById('prev').addEventListener('click',function(){go(-1);});
+  document.getElementById('next').addEventListener('click',function(){go(1);});
+})();
+</script>
+</body>
+</html>
