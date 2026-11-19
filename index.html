@@ -13,7 +13,7 @@
   ・作品を足す: 「ここから作品」から「ここまで作品」までを丸ごとコピーして、好きな位置に貼る（番号 01, 02… は手で直す。水彩の色は自動で変わります。リンクは <a class="go"> の href に入れる）
   ・色を変える: すぐ下の <style> の先頭にある --indigo, --moss, --rose, --ochre
   ・フォントを変える: 同じく先頭の --font-body（本文）、--font-hand（見出し）、--font-accent（名前と番号とメモ）
-  ・GitHubのリンクや名前: 一番下の「れんらく」「footer」を書き換える
+  ・メールやXやGitHubのリンクや名前: 一番下の「れんらく」「footer」を書き換える
 -->
 <style>
 /* 配色: 生成りの紙に墨のインク。藍・苔・桃・黄土は水彩のにじみにだけ使う。
@@ -115,6 +115,9 @@ p{margin:0 0 14px}
 .now blockquote{margin:22px 0 18px 4px;padding:2px 0 2px 20px;border-left:3px solid var(--rose);font-family:var(--font-hand);font-size:19px;line-height:1.9;max-width:26em}
 
 /* ---- 連絡先 ---- */
+.contact-list{list-style:none;margin:6px 0 0;padding:0}
+.contact-list li{padding:4px 0;word-break:break-all}
+.contact-list .label{display:inline-block;min-width:4.6em;font-family:var(--font-hand);font-size:14px;color:var(--ink-soft);letter-spacing:.08em}
 .contact a{font-family:var(--font-hand);font-size:18px;letter-spacing:.06em;text-decoration:underline wavy var(--indigo) 1.5px;text-underline-offset:6px}
 footer{padding:46px 0 64px;font-family:var(--font-hand);font-size:13.5px;color:var(--ink-soft);letter-spacing:.08em}
 
@@ -250,8 +253,12 @@ footer{padding:46px 0 64px;font-family:var(--font-hand);font-size:13.5px;color:v
     <!-- 連絡先: リンクやメールを足すときはここ -->
     <section id="contact" class="contact">
       <h2>れんらく</h2>
-      <p>作ったもののコードはGitHubに置いています。</p>
-      <p><a href="https://github.com/Wakana-0907" target="_blank" rel="noopener">github.com/Wakana-0907</a></p>
+      <p>ご連絡は、メールかXでお願いします。作ったもののコードはGitHubに置いています。</p>
+      <ul class="contact-list">
+        <li><span class="label">メール</span><a href="mailto:s2522030@stu.musashino-u.ac.jp">s2522030@stu.musashino-u.ac.jp</a></li>
+        <li><span class="label">X</span><a href="https://x.com/rate_0907" target="_blank" rel="noopener">@rate_0907</a></li>
+        <li><span class="label">GitHub</span><a href="https://github.com/Wakana-0907" target="_blank" rel="noopener">github.com/Wakana-0907</a></li>
+      </ul>
     </section>
   </main>
 
